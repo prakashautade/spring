@@ -49,3 +49,11 @@ Injecting object reference
 	<property name="car" ref="laFerrari" />
 </bean>
 ```
+#### Bean Scope
+| Scope         | Description                                                                                     |
+| ------------- |:-----------------------------------------------------------------------------------------------:|
+| Singleton     | Spring container creates single bean and used throughout the application, This is default scope |
+| Prototype     | Every time bean is requested to the spring container centered, it creates new bean and return   |
+| Request       | The bean scope is to the HTTP request, Valid in web application                                 |
+| Session       | The bean scope is to the HTTP session, Valid in web application                                 |
+| Global Session| The bean scope is to the global HTTP session, Valid in web application                          |

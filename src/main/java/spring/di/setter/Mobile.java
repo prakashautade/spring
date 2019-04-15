@@ -4,6 +4,9 @@ import spring.di.setter.bean.DeviceInfo;
 import spring.di.setter.bean.MusicPlayer;
 
 public class Mobile {
+
+	private MusicPlayer musicPlayer;
+	private DeviceInfo deviceInfo;
 	
 	public Mobile() {
 		super();
@@ -14,10 +17,6 @@ public class Mobile {
 		this.musicPlayer = musicPlayer;
 		this.deviceInfo = deviceInfo;
 	}
-
-	private MusicPlayer musicPlayer;
-	private DeviceInfo deviceInfo;
-	
 	
 	public MusicPlayer getMusicPlayer() {
 		return musicPlayer;

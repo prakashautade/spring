@@ -57,3 +57,17 @@ Injecting object reference
 | Request       | The bean scope is to the HTTP request, Valid in web application                                 |
 | Session       | The bean scope is to the HTTP session, Valid in web application                                 |
 | Global Session| The bean scope is to the global HTTP session, Valid in web application                          |
+
+#### Spring configuration using annotation
+##### Why should one use annotation to configure spring instead of XML configuration
+- To minimize the configuration from XML file
+
+#### Enable annotation based configuration
+```XML
+	<!-- Enable component scanning -->
+	<context:component-scan base-package="spring.annotation.ioc" />
+```
+#### @Component
+Component annotation is used for class
+If spring perform component scanning it will look for the classes with annotation @Component.
+If it found the class with annotation @Component then spring creates the object for it and make it available through spring container

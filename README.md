@@ -71,3 +71,11 @@ Injecting object reference
 Component annotation is used for class
 If spring perform component scanning it will look for the classes with annotation @Component.
 If it found the class with annotation @Component then spring creates the object for it and make it available through spring container
+
+#### Dependency injection using annotation
+##### Constructor injection
+Annotate your constructor with @Autowired annotation
+##### Setter injection
+Annotate your setter method with with @Autowired annotation
+##### Field injection
+Annotate your field with @Autowired annotation

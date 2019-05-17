@@ -9,7 +9,7 @@ DI is the outsourcing of creation and injection of dependencies to an external o
 
 ##### Spring Bean
 The java object created and managed by spring container is called spring bean.
-
+***
 ##### DI types
 - Constructor injection
 - Setter injection
@@ -22,6 +22,18 @@ In below example dependency *laFerrari* is injected in object *carRacingGame* us
 <bean id="carRacingGame" class="spring.di.constructor.bean.CarRacingGame">
 	<constructor-arg ref="laFerrari" />
 </bean>
+```
+#### Loading spring XML configuration
+```Java
+// Create spring application context
+ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("ConstructorDIAppContext.xml");
+// Retrieve bean
+CarRacingGame game = applicationContext.getBean("carRacingGame", CarRacingGame.class);
+// Use bean
+game.accelerate();
+game.applyBrake();
+// Close spring application context
+applicationContext.close();
 ```
 ##### Setter injection
 Setter injection is used to inject object dependency through setter methods
@@ -49,6 +61,7 @@ Injecting object reference
 	<property name="car" ref="laFerrari" />
 </bean>
 ```
+***
 #### Bean Scope
 | Scope         | Description                                                                                     |
 | ------------- |:-----------------------------------------------------------------------------------------------:|
@@ -57,7 +70,12 @@ Injecting object reference
 | Request       | The bean scope is to the HTTP request, Valid in web application                                 |
 | Session       | The bean scope is to the HTTP session, Valid in web application                                 |
 | Global Session| The bean scope is to the global HTTP session, Valid in web application                          |
-
+Default bean scope is Singleton
+You can set bean scope as follow
+```Xml
+<bean id="moment" class="spring.di.scope.bean.Moment" scope="prototype" />
+```
+***
 #### Spring configuration using annotation
 ##### Why should one use annotation to configure spring instead of XML configuration
 - To minimize the configuration from XML file
@@ -204,5 +222,20 @@ public class AppProperties {
     
     @Value("${app.version}")
     private String version;
+}
+```
+### @Scope
+Annotation @Scope defines the scope of bean
+```Java
+@Component
+@Scope("prototype")
+public class RandomNumber {
+	private int number;
+	public RandomNumber() {
+		number = new Random(10).nextInt();
+	}
+	public int getNumber() {
+		return number;
+	}
 }
 ```

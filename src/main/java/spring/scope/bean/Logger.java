@@ -1,4 +1,4 @@
-package spring.di.scope.bean;
+package spring.scope.bean;
 
 public interface Logger {
 	public void info(String message);

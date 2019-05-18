@@ -1,9 +1,9 @@
-package spring.di.scope;
+package spring.scope;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import spring.di.scope.bean.Logger;
-import spring.di.scope.bean.Moment;
+import spring.scope.bean.Logger;
+import spring.scope.bean.Moment;
 
 public class BeanScopeDemo {
 

@@ -75,6 +75,14 @@ You can set bean scope as follow
 ```Xml
 <bean id="moment" class="spring.di.scope.bean.Moment" scope="prototype" />
 ```
+### Bean Lifcycle
+```
+Initialization --> Populate Properties --> custome init-method/ @PostConstruct --> Bean is ready -> custome dstroy-method/ @PreDestroy --> Destroy
+```
+```Xml
+<!-- Bean life cycle. Call custom init method during bean initialization. call custom destroy method during bean destroy -->
+<bean id="printerPool" class="spring.lifecycle.bean.PrinterPool" init-method="init" destroy-method="destroy" />
+```
 ***
 #### Spring configuration using annotation
 ##### Why should one use annotation to configure spring instead of XML configuration
@@ -238,4 +246,30 @@ public class RandomNumber {
 		return number;
 	}
 }
+```
+### Bean Lefe Clycle
+```Java
+@Component
+public class PrinterPool {
+	public PrinterPool() {
+		System.out.println("Inside PrinterPool constructor.");
+	}
+	@PostConstruct
+	public void init() {
+		System.out.println("Inside PrinterPool init method.");
+	}
+	@PreDestroy
+	public void destroy() {
+		System.out.println("Inside PrinterPool destroy method.");
+	}
+	public void getPrinter() {
+		System.out.println("Returning printer from pool");
+	}
+}
+```
+```
+Inside PrinterPool constructor.
+Inside PrinterPool init method.
+Returning printer from pool
+Inside PrinterPool destroy method.
 ```
